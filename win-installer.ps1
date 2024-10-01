@@ -17,9 +17,12 @@ choco install visualstudio2022community
 # Various
 choco install git-fork
 choco install git
-choco install microsoft-teams-new-bootstrapper
+# Winget seems more consistent here
+winget install -e --id Microsoft.Teams --force
 choco install vlc
 choco install python
+# Keepass might already be installed on Admin account, which means I have to force it to install for this user too
+winget install -e --id KeePassXCTeam.KeePassXC --force
 
 #missing: Metalink
 
