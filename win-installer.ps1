@@ -23,6 +23,12 @@ choco install python
 
 #missing: Metalink
 
+# Windows Settings
+# Fix time zone
+Set-TimeZone -Id "W. Europe Standard Time"
+# Set dark mode
+Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+
 # Debloat
 & ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
 
