@@ -1,6 +1,10 @@
 echo "Running Mike's Default installer"
+
+# Choco
+echo "Installing chocolatey"
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
 # Web
-# failed
 choco install googlechrome
 # Game Dev
 choco install unity-hub
