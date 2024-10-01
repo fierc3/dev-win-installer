@@ -21,3 +21,6 @@ choco install python
 
 # Debloat
 & ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
+
+# Wallpaper
+# Link: https://amaruq.ch/wp-content/uploads/2024/10/wp5299018.jpg
