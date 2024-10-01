@@ -9,8 +9,8 @@ choco install googlechrome
 # Game Dev
 choco install unity-hub
 choco install epicgameslauncher
-# failed
-choco install steam
+# Using winget for steam instead of choco because choco package maintainers are lazy :(
+winget install -e --id Valve.Steam
 # General IDEs
 choco install vscode
 choco install visualstudio2022community
