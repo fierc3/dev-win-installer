@@ -23,6 +23,8 @@ choco install vlc
 choco install python
 # Keepass might already be installed on Admin account, which means I have to force it to install for this user too
 winget install -e --id KeePassXCTeam.KeePassXC --force
+winget install -e --id OBSProject.OBSStudio
+winget install -e --id OpenJS.NodeJS
 
 #missing: Metalink
 
