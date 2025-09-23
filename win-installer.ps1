@@ -23,7 +23,9 @@ choco install googlechrome -y
 # Game Dev
 choco install unity-hub -y
 choco install epicgameslauncher -y
-# Using winget for steam instead of choco because choco package maintainers are lazy :(
+## Launch Godot with CLI command `godot`
+winget install --id=GodotEngine.GodotEngine  -e --silent --accept-package-agreements --accept-source-agreements
+## Using winget for steam instead of choco because choco package maintainers are lazy :(
 winget install -e --id Valve.Steam --silent --accept-package-agreements --accept-source-agreements
 # General IDEs
 choco install vscode -y
@@ -46,9 +48,9 @@ winget install --id Python.Python.3.11 --source winget --silent --accept-package
 
 Write-Host "[==== ] Setting defualt windows settings..." -ForegroundColor DarkGray
 # Windows Settings
-# Fix time zone
+## Fix time zone
 Set-TimeZone -Id "W. Europe Standard Time"
-# Set dark mode
+## Set dark mode
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
 
 Write-Host "[=====] Debloating & Setting Theme" -ForegroundColor DarkGray
@@ -56,7 +58,7 @@ Write-Host "[=====] Debloating & Setting Theme" -ForegroundColor DarkGray
 & ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
 
 # Wallpaper
-# Link: https://amaruq.ch/wp-content/uploads/2024/10/wp5299018.jpg
+## Link: https://amaruq.ch/wp-content/uploads/2024/10/wp5299018.jpg
 
 $setwallpapersrc = @"
 using System.Runtime.InteropServices;
@@ -91,7 +93,7 @@ mkdir "$env:APPDATA/fierc3"
 Invoke-WebRequest -Uri "https://amaruq.ch/wp-content/uploads/2024/10/wp5299018.jpg" -OutFile "$env:APPDATA/fierc3/wallpaper.jpg"
 [Wallpaper]::SetWallpaper("$env:APPDATA/fierc3/wallpaper.jpg", "Fit")
 
-# Fix color accent for wallpaper
+## Fix color accent for wallpaper
 $registryPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"
 Set-ItemProperty -Path $registryPath -Name "ColorPrevalence" -Value 1
 Set-ItemProperty -Path $registryPath -Name "AutoColorization" -Value 1
