@@ -17,37 +17,41 @@ Write-Host "[==    ] Downloading Chocolatey..." -ForegroundColor DarkGray
 echo "Installing chocolatey"
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+Write-Host "[===  ] Downloading Choco & Winget packages..." -ForegroundColor DarkGray
 # Web
-choco install googlechrome
+choco install googlechrome -y
 # Game Dev
-choco install unity-hub
-choco install epicgameslauncher
+choco install unity-hub -y
+choco install epicgameslauncher -y
 # Using winget for steam instead of choco because choco package maintainers are lazy :(
-winget install -e --id Valve.Steam
+winget install -e --id Valve.Steam --silent --accept-package-agreements --accept-source-agreements
 # General IDEs
-choco install vscode
-choco install visualstudio2022community
+choco install vscode -y
+choco install visualstudio2022community -y
 # Various
-choco install git-fork
-choco install git
+choco install git-fork -y
+choco install git -y
 # Winget seems more consistent here
-winget install -e --id Microsoft.Teams --force
-choco install vlc
+winget install -e --id Microsoft.Teams --force --silent --accept-package-agreements --accept-source-agreements
+choco install vlc -y
 # Keepass might already be installed on Admin account, which means I have to force it to install for this user too
-winget install -e --id KeePassXCTeam.KeePassXC --force
-winget install -e --id OBSProject.OBSStudio
-winget install -e --id OpenJS.NodeJS
-winget install -e --id RARLab.WinRAR
+winget install -e --id KeePassXCTeam.KeePassXC --force --silent --accept-package-agreements --accept-source-agreements
+winget install -e --id OBSProject.OBSStudio --silent --accept-package-agreements --accept-source-agreements
+winget install -e --id OpenJS.NodeJS --silent --accept-package-agreements --accept-source-agreements
+winget install -e --id RARLab.WinRAR --silent --accept-package-agreements --accept-source-agreements
 
 # FIRST Remove Microsoft Store Python Stub: Go to Settings > Apps > Advanced app settings > App execution aliases
-winget install --id Python.Python.3.11 --source winget
+winget install --id Python.Python.3.11 --source winget --silent --accept-package-agreements --accept-source-agreements
 
+
+Write-Host "[==== ] Setting defualt windows settings..." -ForegroundColor DarkGray
 # Windows Settings
 # Fix time zone
 Set-TimeZone -Id "W. Europe Standard Time"
 # Set dark mode
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
 
+Write-Host "[=====] Debloating & Setting Theme" -ForegroundColor DarkGray
 # Debloat
 & ([scriptblock]::Create((irm "https://win11debloat.raphi.re/")))
 
@@ -95,4 +99,4 @@ Stop-Process -Name explorer -Force
 Start-Process explorer
 Write-Output "Accent color set to automatic."
 
-Write-Output "+++++Script Finished+++++++"
+Write-Host "[=====] Script finished!" -ForegroundColor Green
