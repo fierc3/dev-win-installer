@@ -1,7 +1,18 @@
 Write-Host ""
 Write-Host ">>> Running Mike's Dev Setup Installer <<<" -ForegroundColor Yellow
 Write-Host ""
+Start-Sleep -Seconds 1
+Write-Host "[=     ] Checking Permissions..." -ForegroundColor DarkGray
+Start-Sleep -Seconds 1
+# Check if running as Administrator
+$IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 
+if (-not $IsAdmin) {
+    Write-Host "ERROR: Please run this script in an elevated (Administrator) PowerShell!" -ForegroundColor Red
+    exit 1
+}
+
+Write-Host "[==    ] Downloading Chocolatey..." -ForegroundColor DarkGray
 # Choco
 echo "Installing chocolatey"
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
