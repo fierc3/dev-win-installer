@@ -1,4 +1,6 @@
-echo "Running Mike's Default installer"
+Write-Host ""
+Write-Host ">>> Running Mike's Dev Setup Installer <<<" -ForegroundColor Yellow
+Write-Host ""
 
 # Choco
 echo "Installing chocolatey"
