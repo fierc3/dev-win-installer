@@ -24,6 +24,7 @@ choco install vlc
 winget install -e --id KeePassXCTeam.KeePassXC --force
 winget install -e --id OBSProject.OBSStudio
 winget install -e --id OpenJS.NodeJS
+winget install -e --id RARLab.WinRAR
 
 # FIRST Remove Microsoft Store Python Stub: Go to Settings > Apps > Advanced app settings > App execution aliases
 winget install --id Python.Python.3.11 --source winget
